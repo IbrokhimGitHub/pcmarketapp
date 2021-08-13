@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+//@Entity
 public class Notebook extends AbsComputer {
     private String graphicProcessor;
 }

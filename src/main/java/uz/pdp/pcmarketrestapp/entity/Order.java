@@ -1,0 +1,25 @@
+package uz.pdp.pcmarketrestapp.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @OneToOne
+    private Basket basket;
+    private String fullName;
+    private String address;
+    private String phoneNumber;
+    private String email;
+    private String notes;
+
+}

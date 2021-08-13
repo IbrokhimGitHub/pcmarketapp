@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+//@Entity
 public class Computer extends AbsComputer {
 private String motherBoard;
 private String graphicProcessor;

@@ -25,6 +25,12 @@ public class Product {
     @Column(nullable = false)
     private boolean isActive=true;
     @Column(nullable = false)
+    @ManyToOne
+    private Category category;
+
+
+    //describes of product to show in site
+    private String describe;
 
 
     //computer values
@@ -58,6 +64,7 @@ public class Product {
     private boolean gaming;
     private boolean silentButtons;
     private String otherFields;
+
 
 
 
