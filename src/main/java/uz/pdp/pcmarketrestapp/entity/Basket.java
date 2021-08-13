@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany
-    private List<Product> products;
+    @ManyToOne
+    private User user;
 
 }
