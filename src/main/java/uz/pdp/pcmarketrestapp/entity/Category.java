@@ -15,6 +15,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-//    @ManyToOne
-//    private Category parentCategory;
+    @ManyToOne
+    private Category parentCategory;
 }
