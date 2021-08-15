@@ -15,7 +15,7 @@ public class CharacterValue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String property;
+    private String value;
     @ManyToOne
     private CharacterKey characterKey;
 }

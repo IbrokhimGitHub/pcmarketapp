@@ -14,8 +14,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//    @ManyToOne
-//    private BasketProduct basket;
+    @ManyToOne
+    private Basket basket;
     private String fullName;
     private String address;
     private String phoneNumber;

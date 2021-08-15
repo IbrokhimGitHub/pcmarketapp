@@ -2,6 +2,7 @@ package uz.pdp.pcmarketrestapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import uz.pdp.pcmarketrestapp.entity.FilterResult;
 import uz.pdp.pcmarketrestapp.entity.Product;
 import uz.pdp.pcmarketrestapp.repository.ProductRepository;
 
@@ -15,30 +16,36 @@ public class CategoryService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> filtered(Map<String, String> params) {
-        StringBuilder forQueryValues = new StringBuilder("(");
-        StringBuilder forQueryKeys = new StringBuilder();
+    public List<FilterResult> filtered(Map<String, String> params) {
         Set<String> keySet = params.keySet();
+        Collection<String> values = params.values();
+        String strValues="";
+        for (String value : values) {
+            strValues+=value+",";
+        }
+        strValues = strValues.substring(0, strValues.length() - 1);
+        String[] split = strValues.split(",");
 
+
+
+        String keyString=" ('";
+        String valueString=" ('";
         for (String key : keySet) {
-            forQueryKeys.append(key).append(" in ");
-            String values = params.get(key);
-            String[] split = values.split(",");
-            for (int i = 0; i < split.length; i++) {
-                if (i == split.length - 1){
-                    forQueryValues.append("'").append(split[i]).append("')");
-                }else {
-                    forQueryValues.append("'").append(split[i]).append("', ");
-                }
-            }
-            forQueryKeys = forQueryKeys.append(" ").append(forQueryValues).append(" and ");
-            forQueryValues=new StringBuilder("(");
+            keyString+=key+"', '";
         }
-        String query = forQueryKeys.toString();
-        if (query.endsWith("and ")) {
-            query = query.substring(0, query.length() - 4);
+        keyString=keyString.substring(0,keyString.length()-3)+")";
+
+        for (String value : split) {
+            valueString+=value+"', '";
         }
-        List<Product> products = productRepository.filteredProducts(query);
+        valueString=valueString.substring(0,valueString.length()-3)+")";
+
+        System.out.println(keyString);
+        System.out.println(valueString);
+        keyString="property=ram";
+        valueString="value =18GB";
+        List<FilterResult> products = productRepository.filteredProducts(keyString,valueString);
+
         return products;
     }
 

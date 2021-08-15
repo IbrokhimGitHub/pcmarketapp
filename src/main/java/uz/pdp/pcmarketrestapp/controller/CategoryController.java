@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import uz.pdp.pcmarketrestapp.entity.FilterResult;
 import uz.pdp.pcmarketrestapp.entity.Product;
 import uz.pdp.pcmarketrestapp.service.CategoryService;
 
@@ -21,7 +22,7 @@ public class CategoryController {
     @GetMapping("/swoof")
     public HttpEntity<?> getByFilter(@RequestParam Map<String,String> params){
 
-        List<Product> filtered = categoryService.filtered(params);
+        List<FilterResult> filtered = categoryService.filtered(params);
         return ResponseEntity.ok(filtered);
     }
 
