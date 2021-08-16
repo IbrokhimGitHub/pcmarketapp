@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "CharacterKey")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CharacterKey {
+public class Key {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
